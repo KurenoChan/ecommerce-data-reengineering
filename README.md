@@ -14,6 +14,36 @@ Each module is designed to be independently testable and reproducible.
 
 ---
 
+## Dataset Source
+
+This project uses a publicly available dataset:
+
+- **Dog Survey Dataset (Dirty Data Project)**  
+- Source: https://github.com/alasdairgm/dirty_data_project  
+- File used: `task6/raw_data/dog_survey.csv`
+
+### License
+
+This dataset is distributed under the **MIT License**:
+
+MIT License
+
+Copyright (c) 2023 alasdairgm
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+---
+
 ## Project Structure
 ```bash
 📦 ecommerce-data-reengineering
