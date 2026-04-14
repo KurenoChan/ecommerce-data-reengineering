@@ -99,7 +99,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
 ### 1. Clone the repository
 
 ```bash
-git clone 
+git clone https://github.com/KurenoChan/ecommerce-data-reengineering
 cd ecommerce-data-reengineering
 ```
 ---
