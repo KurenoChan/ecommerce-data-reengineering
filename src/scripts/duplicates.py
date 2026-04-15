@@ -50,7 +50,6 @@ def duplicate_report(df: pd.DataFrame, name: str = "DATASET", show_samples=True)
 
 
 
-
 def remove_duplicates(df):
     df = df.copy()
 

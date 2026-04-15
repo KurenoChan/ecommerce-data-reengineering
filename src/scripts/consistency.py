@@ -164,7 +164,7 @@ def fix_title_consistency(df):
 
     s = s.str.strip().str.title()
 
-    valid = {"Mr", "Mrs", "Ms", "Dr", "Rev", "Honorable"}
+    valid = {"Mr", "Mrs", "Ms", "Dr", "Rev", "Honorable", "Unknown"}
 
     df["title"] = s.where(s.isin(valid), "Unknown")
 

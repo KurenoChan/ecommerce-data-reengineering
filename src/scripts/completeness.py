@@ -37,13 +37,10 @@ def fix_title_completeness(df):
 
     s = df["title"].astype("string")
 
-    s = s.replace([
-        "", " ", "-", "none", "null", "nan",
-        "None", "NULL", "NaN"
-    ], pd.NA)
+    s = s.replace(["", " "], pd.NA)
+    s = s.replace(pd.NA, "Unknown")
 
     df["title"] = s
-
     return df
 
 
@@ -52,7 +49,8 @@ def fix_email_completeness(df):
 
     s = df["email"].astype("string")
 
-    s = s.replace(["", " ", "null", "nan"], pd.NA)
+    s = s.replace(["", " "], pd.NA)
+    s = s.replace(pd.NA, "Unknown")
 
     df["email"] = s
 
@@ -62,24 +60,24 @@ def fix_email_completeness(df):
 def fix_amount_completeness(df):
     df = df.copy()
 
-    s = df["amount_spent_on_dog_food"].astype(str)
+    s = df["amount_spent_on_dog_food"]
 
-    s = s.replace(["", " ", "nan", "None", "null", "NULL"], np.nan)
+    s = s.replace(["", " "], pd.NA)
+    s = s.replace(pd.NA, "Unknown")
 
     df["amount_spent_on_dog_food"] = s
-
     return df
 
 
 def fix_dog_size_completeness(df):
     df = df.copy()
 
-    df["dog_size"] = (
-        df["dog_size"]
-        .astype(str)
-        .replace(["", " ", "nan", "None", "NULL", "null"], np.nan)
-    )
+    s = df["dog_size"].astype("string")
 
+    s = s.replace(["", " "], pd.NA)
+    s = s.replace(pd.NA, "Unknown")
+
+    df["dog_size"] = s
     return df
 
 
@@ -88,16 +86,22 @@ def fix_dog_gender_completeness(df):
 
     s = df["dog_gender"].astype("string")
 
-    s = s.replace(["", " ", "nan", "null"], pd.NA)
+    s = s.str.strip()
+
+    s = s.replace(["", " "], pd.NA)
+    s = s.replace(pd.NA, "Unknown")
 
     df["dog_gender"] = s
-
     return df
 
 
 def fix_dog_age_completeness(df):
     df = df.copy()
 
-    df["dog_age"] = df["dog_age"].replace("", np.nan)
+    s = df["dog_age"]
 
+    s = s.replace(["", " "], pd.NA)
+    s = s.replace(pd.NA, "Unknown")
+
+    df["dog_age"] = s
     return df

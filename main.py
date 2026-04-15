@@ -91,35 +91,61 @@ total_changes["duplicates_removed"] = show_duplicate_removal(before, df)
 print("\n[STEP] title cleaning")
 before = df.copy()
 df = fix_title_completeness(df)
-df = fix_title_consistency(df)
+after_completeness = df.copy()
 total_changes["title"] = show_step_changes(
-    "Title Cleaning", before, df, focus_cols=["title"]
+    "Title Completeness Cleaning",
+    before,
+    after_completeness,
+    focus_cols=["title"]
+)
+df = fix_title_consistency(df)
+after_consistency = df.copy()
+total_changes["title"] = show_step_changes(
+    "Title Consistency Cleaning",
+    after_completeness,
+    after_consistency,
+    focus_cols=["title"]
 )
 
 # EMAIL
 print("\n[STEP] email cleaning")
 before = df.copy()
 df = fix_email_completeness(df)
-df = fix_email_consistency(df)
+after_completeness = df.copy()
 total_changes["email"] = show_step_changes(
-    "Email Cleaning", before, df, focus_cols=["email"]
+    "Email Completeness Cleaning", before, after_completeness, focus_cols=["email"]
+)
+df = fix_email_consistency(df)
+after_consistency = df.copy()
+total_changes["email"] = show_step_changes(
+    "Email Consistency Cleaning", after_completeness, after_consistency, focus_cols=["email"]
 )
 
 # AMOUNT
 print("\n[STEP] amount cleaning")
 before = df.copy()
 df = fix_amount_completeness(df)
-df = fix_amount_consistency(df)
+after_completeness = df.copy()
 total_changes["amount"] = show_step_changes(
-    "Amount Fix", before, df, focus_cols=["amount_spent_on_dog_food"]
+    "Amount Completeness Cleaning", before, after_completeness, focus_cols=["amount_spent_on_dog_food"]
+)
+df = fix_amount_consistency(df)
+after_consistency = df.copy()
+total_changes["amount"] = show_step_changes(
+    "Amount Consistency Cleaning", after_completeness, after_consistency, focus_cols=["amount_spent_on_dog_food"]
 )
 
 print("\n[STEP] dog_size cleaning")
 before = df.copy()
 df = fix_dog_size_completeness(df)
-df = fix_dog_size_consistency(df)
+after_completeness = df.copy()
 total_changes["dog_size"] = show_step_changes(
-    "Dog Size Fix", before, df, focus_cols=["dog_size"]
+    "Dog Size Completeness Cleaning", before, after_completeness, focus_cols=["dog_size"]
+)
+df = fix_dog_size_consistency(df)
+after_consistency = df.copy()
+total_changes["dog_size"] = show_step_changes(
+    "Dog Size Consistency Cleaning", after_completeness, after_consistency, focus_cols=["dog_size"]
 )
 
 
@@ -127,9 +153,14 @@ total_changes["dog_size"] = show_step_changes(
 print("\n[STEP] dog_gender cleaning")
 before = df.copy()
 df = fix_dog_gender_completeness(df)
-df = fix_dog_gender_consistency(df)
+after_completeness = df.copy()
 total_changes["dog_gender"] = show_step_changes(
-    "Dog Gender Cleaning", before, df, focus_cols=["dog_gender"]
+    "Dog Gender Completeness Cleaning", before, after_completeness, focus_cols=["dog_gender"]
+)
+df = fix_dog_gender_consistency(df)
+after_consistency = df.copy()
+total_changes["dog_gender"] = show_step_changes(
+    "Dog Gender Consistency Cleaning", after_completeness, after_consistency, focus_cols=["dog_gender"]
 )
 
 
@@ -137,9 +168,14 @@ total_changes["dog_gender"] = show_step_changes(
 print("\n[STEP] dog_age cleaning")
 before = df.copy()
 df = fix_dog_age_completeness(df)
-df = fix_dog_age_consistency(df)
+after_completeness = df.copy()
 total_changes["dog_age"] = show_step_changes(
-    "Dog Age Cleaning", before, df, focus_cols=["dog_age"]
+    "Dog Age Completeness Cleaning", before, after_completeness, focus_cols=["dog_age"]
+)
+df = fix_dog_age_consistency(df)
+after_consistency = df.copy()
+total_changes["dog_age"] = show_step_changes(
+    "Dog Age Consistency Cleaning", after_completeness, after_consistency, focus_cols=["dog_age"]
 )
 
 
