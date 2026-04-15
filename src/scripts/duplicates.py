@@ -1,5 +1,8 @@
 import pandas as pd
 
+# =====================
+# DUPLICATION REPORTING
+# =====================
 
 def duplicate_summary(df: pd.DataFrame):
     dup_mask = df.duplicated(keep=False)
@@ -48,6 +51,10 @@ def duplicate_report(df: pd.DataFrame, name: str = "DATASET", show_samples=True)
 
     return summary
 
+
+# =====================
+# DUPLICATION CLEANSING
+# =====================
 
 
 def remove_duplicates(df):

@@ -3,79 +3,10 @@ import numpy as np
 import re
 
 
-# -------------------------
-# INCONSISTENCY REPORT
-# -------------------------
-# def inconsistency_report(df, name):
-#     issues = {}
+# =====================
+# CONSISTENCY REPORTING
+# =====================
 
-#     valid_size = {"Small", "Medium", "Large", "Extra Large", "Extra Small", "Unknown"}
-#     valid_gender = {"Male", "Female", "Unknown"}
-
-#     # =========================
-#     # SIZE / GENDER
-#     # =========================
-#     issues["dog_size"] = df[
-#         ~df["dog_size"].astype(str).str.strip().str.title().isin(valid_size)
-#     ]
-
-#     issues["dog_gender"] = df[
-#         ~df["dog_gender"].astype(str).str.strip().str.title().isin(valid_gender)
-#     ]
-
-#     # =========================
-#     # DOG AGE
-#     # =========================
-#     raw_age = df["dog_age"].astype(str)
-
-#     issues["dog_age_format"] = df[
-#         raw_age.str.contains(r"[^\d\.]", na=False) & raw_age.notna()
-#     ]
-
-#     # NOTE: removed range-based validation (accuracy, not consistency rule)
-
-#     # =========================
-#     # AMOUNT
-#     # =========================
-#     raw_amount = df["amount_spent_on_dog_food"].astype(str)
-
-#     issues["amount_format"] = df[raw_amount.str.contains(r"[^\d\.\£,]", na=False)]
-
-#     # NOTE: removed range-based validation (accuracy, not consistency rule)
-
-#     # =========================
-#     # EMAIL
-#     # =========================
-#     issues["email"] = df[
-#         ~df["email"]
-#         .astype(str)
-#         .str.match(r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", na=False)
-#     ]
-
-#     # =========================
-#     # REPORT
-#     # =========================
-#     print(f"\n=== INCONSISTENCY REPORT: {name} ===")
-
-#     total = sum(len(v) for v in issues.values())
-#     print(f"Total Issues Found: {total}")
-
-#     summary = []
-#     for k, v in issues.items():
-#         summary.append([k, len(v), round(len(v) / len(df) * 100, 2)])
-
-#     print("\n--- SUMMARY TABLE ---")
-#     print(pd.DataFrame(summary, columns=["Column", "Count", "Rate %"]))
-
-#     print("\n--- FULL INCONSISTENT RECORDS ---")
-#     for k, v in issues.items():
-#         print("\n" + "=" * 80)
-#         print(f"ISSUE CATEGORY: {k}")
-#         print(f"Total rows affected: {len(v)}")
-#         print("=" * 80)
-#         print(v.sort_index())
-
-#     return issues
 
 def inconsistency_summary(df: pd.DataFrame) -> pd.DataFrame:
     valid_size = {"Small", "Medium", "Large", "Extra Large", "Extra Small", "Unknown"}
@@ -131,6 +62,7 @@ def inconsistency_summary(df: pd.DataFrame) -> pd.DataFrame:
 
     return summary, result
 
+
 def inconsistency_report(df: pd.DataFrame, name: str, show_samples=True):
     summary, mask_df = inconsistency_summary(df)
 
@@ -155,6 +87,9 @@ def inconsistency_report(df: pd.DataFrame, name: str, show_samples=True):
     return summary
 
 
+# =====================
+# CONSISTENCY CLEANSING
+# =====================
 
 
 def fix_title_consistency(df):

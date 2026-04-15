@@ -1,12 +1,19 @@
 import pandas as pd
 import numpy as np
 
+
+# ======================
+# COMPLETENESS REPORTING
+# ======================
+
+
 def completeness_summary(df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame({
         "Missing Count": df.isna().sum(),
         "Missing %": (df.isna().mean() * 100).round(2)
     }).sort_values("Missing Count", ascending=False)
-    
+
+
 def completeness_report(df, name, show_samples=True):
     missing_mask = df.isna()
 
@@ -30,6 +37,10 @@ def completeness_report(df, name, show_samples=True):
                 print(f"\n[{col}] missing examples ({len(col_missing)} rows total)")
                 print(col_missing.head(3))
 
+
+# ======================
+# COMPLETENESS CLEANSING
+# ======================
 
 
 def fix_title_completeness(df):
